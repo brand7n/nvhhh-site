@@ -1,7 +1,8 @@
 #!/usr/bin/env node
-// Static site builder: markdown content -> HTML. No dependencies.
+// Static site builder: markdown content -> HTML.
 const fs = require('fs');
 const path = require('path');
+const { marked } = require('marked');
 
 const ROOT = __dirname;
 const CONTENT = path.join(ROOT, 'content');
@@ -9,108 +10,21 @@ const TEMPLATE = path.join(ROOT, 'templates', 'layout.html');
 const DIST = path.join(ROOT, 'dist');
 
 // ---------- markdown -> html ----------
-function esc(s) {
-  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-}
-
-function inline(s) {
-  // code spans first
-  s = s.replace(/`([^`]+)`/g, (_, c) => '<code>' + esc(c) + '</code>');
-  // images
-  s = s.replace(/!\[([^\]]*)\]\(([^)\s]+)(?:\s+&quot;([^&]*)&quot;)?\)/g,
-    (_, alt, src, title) => `<img src="${src}" alt="${esc(alt)}"${title ? ` title="${esc(title)}"` : ''} loading="lazy">`);
-  // links
-  s = s.replace(/\[([^\]]+)\]\(([^)\s]+)(?:\s+&quot;([^&]*)&quot;)?\)/g,
-    (_, text, href, title) => `<a href="${href}"${title ? ` title="${esc(title)}"` : ''}>${text}</a>`);
-  // bold / italic
-  s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-  s = s.replace(/(^|[^*])\*([^*\n]+)\*/g, '$1<em>$2</em>');
-  return s;
-}
-
-function parseTable(lines, i) {
-  const rows = [];
-  while (i < lines.length && lines[i].trim().startsWith('|')) {
-    rows.push(lines[i].trim().replace(/^\||\|$/g, '').split('|').map(c => c.trim()));
-    i++;
+// Wrap tables in a scrollable container for mobile.
+const renderer = {
+  table(token) {
+    const head = token.header.map(c => `<th>${c.text}</th>`).join('');
+    const body = token.rows.map(r => '<tr>' + r.map(c => `<td>${c.text}</td>`).join('') + '</tr>').join('');
+    return `<div class="table-wrap"><table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>`;
+  },
+  image({ href, title, text }) {
+    return `<img src="${href}" alt="${text}"${title ? ` title="${title}"` : ''} loading="lazy">`;
   }
-  // skip separator row
-  if (rows.length > 1 && rows[1].every(c => /^:?-{2,}:?$/.test(c))) rows.splice(1, 1);
-  const head = rows[0];
-  const body = rows.slice(1);
-  let h = '<div class="table-wrap"><table><thead><tr>' +
-    head.map(c => `<th>${inline(c)}</th>`).join('') + '</tr></thead><tbody>';
-  for (const r of body) {
-    h += '<tr>' + r.map(c => `<td>${inline(c)}</td>`).join('') + '</tr>';
-  }
-  return h + '</tbody></table></div>';
-}
+};
+marked.use({ renderer });
 
 function mdToHtml(md) {
-  const lines = md.replace(/\r\n/g, '\n').split('\n');
-  let html = '';
-  let i = 0;
-  let list = null; // {type, items, tight}
-
-  const closeList = () => {
-    if (list) {
-      const tag = list.type === 'ul' ? 'ul' : 'ol';
-      html += `<${tag}>` + list.items.map(li => `<li>${li}</li>`).join('') + `</${tag}>`;
-      list = null;
-    }
-  };
-
-  while (i < lines.length) {
-    const line = lines[i];
-
-    if (!line.trim()) { closeList(); i++; continue; }
-
-    // headings
-    const h = line.match(/^(#{1,6})\s+(.*)$/);
-    if (h) { closeList(); html += `<h${h[1].length}>${inline(h[2])}</h${h[1].length}>`; i++; continue; }
-
-    // horizontal rule
-    if (/^\s*(-{3,}|\*{3,})\s*$/.test(line)) { closeList(); html += '<hr>'; i++; continue; }
-
-    // blockquote
-    if (line.trim().startsWith('>')) {
-      closeList();
-      const q = [];
-      while (i < lines.length && lines[i].trim().startsWith('>')) { q.push(lines[i].trim().replace(/^>\s?/, '')); i++; }
-      html += `<blockquote>${mdToHtml(q.join('\n'))}</blockquote>`;
-      continue;
-    }
-
-    // table
-    if (line.trim().startsWith('|')) {
-      closeList();
-      html += parseTable(lines, i);
-      while (i < lines.length && lines[i].trim().startsWith('|')) i++;
-      continue;
-    }
-
-    // lists
-    const ul = line.match(/^\s*[-*+]\s+(.*)$/);
-    const ol = line.match(/^\s*\d+\.\s+(.*)$/);
-    if (ul || ol) {
-      const type = ul ? 'ul' : 'ol';
-      if (!list || list.type !== type) { closeList(); list = { type, items: [] }; }
-      list.items.push(inline((ul || ol)[1]));
-      i++;
-      continue;
-    }
-
-    // paragraph
-    closeList();
-    const para = [];
-    while (i < lines.length && lines[i].trim() && !/^(#{1,6}\s|[-*+]\s|\d+\.\s|>|\||-{3,}\s*$)/.test(lines[i])) {
-      para.push(lines[i]);
-      i++;
-    }
-    html += `<p>${inline(para.join(' '))}</p>`;
-  }
-  closeList();
-  return html;
+  return marked.parse(md);
 }
 
 // ---------- frontmatter ----------
