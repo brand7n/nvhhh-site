@@ -7,9 +7,9 @@ The Nittany Valley HHH was founded in 1987 by Mike "Dr. Kraut" Modest
 
 ## Nittany Valley HHH 2024–2025 Mismanagement
 
-- **Tyrant:** Daddy's Home...Bitch — [tyrant@nvhhh.com](mailto:tyrant@nvhhh.com)
-- **Religious Adviser:** Fletch
-- **Altar People:** The Tickle Me Homo
+- **Tyrant:** It's A Secret — [tyrant@nvhhh.com](mailto:tyrant@nvhhh.com)
+- **Religious Adviser:** ??
+- **Altar People:** ??
 - **Hash Cash:** The Tickle Me Homo
 - **Hareraiser:** The Tickle Me Homo — [hareraiser@nvhhh.com](mailto:hareraiser@nvhhh.com)
 - **Webmaster:** The Tickle Me Homo — [webmaster@nvhhh.com](mailto:webmaster@nvhhh.com)
@@ -52,3 +52,6 @@ The Nittany Valley HHH was founded in 1987 by Mike "Dr. Kraut" Modest
 - Truck Stop Taco (21–22)
 - Ya Lion Clint (22–23)
 - Dragnet (23–24)
+- Daddy's Home...Bitch (24–25)
+- You Can Call Me Anything That You Like But My Name Is Veronica (25-26)
+
