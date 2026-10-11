@@ -50,7 +50,7 @@ a:hover { color: var(--accent-dark); }
 .brand-text { display: flex; flex-direction: column; min-width: 0; }
 .brand-name { font-weight: 700; font-size: 1rem; line-height: 1.2; }
 .brand-slogan { font-size: .78rem; color: #eaf4fb; font-style: italic; }
-.brand:hover .brand-name { color: #ffe08a; }
+.brand:hover, .brand:hover .brand-name { color: #ffe08a; }
 
 .nav-toggle {
   display: inline-flex; flex-direction: column; justify-content: center; gap: 5px;
