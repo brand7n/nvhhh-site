@@ -10,14 +10,12 @@ Follow [@nvhhh](https://twitter.com/nvhhh) on Twitter.
 ## Other Hash Links
 
 - [Hash House Harriers (wikipedia)](https://en.wikipedia.org/wiki/Hash_House_Harriers)
-- [Hash Primer](http://half-mind.com/Hashing/who.php#2)
-- [Elements of Hashing](http://half-mind.com/Hashing/who.php#6)
+- [Hash Primer](http://half-mind.com/)
 - [Hash Documentary (Part 1)](https://www.youtube.com/watch?v=3_kxzbZMkDc)
 - [Hash Documentary (Part 2)](https://www.youtube.com/watch?v=orl-Ut9A-cM)
 - [HashSpace](http://www.hashspace.com/)
 - [HashRego](https://hashrego.com/)
-- [Half Mind Catalog](http://half-mind.com/index.php)
-- [Flying Booger's Hash Blog](http://pwoodford.net/hashblog/)
+- [Half Mind Catalog](http://half-mind.com/)
 - [Worldwide Hash Events](http://gotothehash.net/)
 - [Harrier Magazine](http://www.harriermagazine.com/)
 
