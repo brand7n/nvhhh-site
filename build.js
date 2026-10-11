@@ -13,8 +13,8 @@ const DIST = path.join(ROOT, 'dist');
 // Wrap tables in a scrollable container for mobile.
 const renderer = {
   table(token) {
-    const head = token.header.map(c => `<th>${c.text}</th>`).join('');
-    const body = token.rows.map(r => '<tr>' + r.map(c => `<td>${c.text}</td>`).join('') + '</tr>').join('');
+    const head = token.header.map(c => `<th>${this.parser.parseInline(c.tokens)}</th>`).join('');
+    const body = token.rows.map(r => '<tr>' + r.map(c => `<td>${this.parser.parseInline(c.tokens)}</td>`).join('') + '</tr>').join('');
     return `<div class="table-wrap"><table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>`;
   },
   image({ href, title, text }) {
