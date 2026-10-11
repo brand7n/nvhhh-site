@@ -194,5 +194,11 @@ for (const f of fs.readdirSync(CONTENT)) {
 
 // copy assets
 fs.cpSync(path.join(ROOT, 'assets'), path.join(DIST, 'assets'), { recursive: true });
+
+// copy FullCalendar from node_modules (npm-managed)
+const fc = path.join(DIST, 'assets', 'vendor', 'fullcalendar');
+fs.mkdirSync(fc, { recursive: true });
+fs.copyFileSync(path.join(ROOT, 'node_modules', 'fullcalendar', 'index.global.min.js'), path.join(fc, 'index.global.min.js'));
+fs.copyFileSync(path.join(ROOT, 'node_modules', '@fullcalendar', 'google-calendar', 'index.global.min.js'), path.join(fc, 'google-calendar.global.min.js'));
 console.log('copied assets');
 console.log('done');
