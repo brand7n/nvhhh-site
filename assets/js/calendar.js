@@ -89,7 +89,8 @@
 
   function openModal(ev) {
     title.textContent = ev.title || ev.summary || 'Untitled';
-    start.textContent = ev.start ? new Date(ev.start).toLocaleString() : 'TBD';
+    var rawStart = ev.start ? (ev.start.dateTime || ev.start.date) : null;
+    start.textContent = rawStart ? new Date(rawStart).toLocaleString() : 'TBD';
     location.textContent = ev.extendedProps ? (ev.extendedProps.location || 'TBD') : (ev.location || 'TBD');
     details.textContent = ev.extendedProps ? (ev.extendedProps.description || 'TBD') : (ev.description || 'TBD');
     backdrop.classList.add('open');
