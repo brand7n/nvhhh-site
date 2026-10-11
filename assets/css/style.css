@@ -78,7 +78,7 @@ main { padding-top: 20px; padding-bottom: 40px; }
 
 main h1 { font-size: 1.7rem; line-height: 1.25; margin: 0 0 16px; }
 main h2 { font-size: 1.3rem; margin: 28px 0 10px; padding-bottom: 6px; border-bottom: 2px solid var(--line); }
-main h3 { font-size: 1.15rem; font-weight: 700; color: var(--accent-dark); margin: 24px 0 8px; }
+main h3 { font-size: 1.15rem; font-weight: 700; color: var(--ink); margin: 24px 0 8px; }
 main p { margin: 0 0 14px; }
 main ul, main ol { margin: 0 0 14px; padding-left: 22px; }
 main li { margin-bottom: 6px; }
