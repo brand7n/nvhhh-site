@@ -12,22 +12,22 @@
   var calendar = new FullCalendar.Calendar(el, {
     googleCalendarApiKey: API_KEY,
     events: CAL_ID,
-    initialView: isMobile() ? 'listWeek' : 'dayGridMonth',
+    initialView: isMobile() ? 'listMonth' : 'dayGridMonth',
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: isMobile() ? 'listWeek' : 'dayGridMonth,listWeek'
+      right: isMobile() ? 'listMonth' : 'dayGridMonth,listMonth'
     },
     height: 'auto',
     nowIndicator: true,
     eventTimeFormat: { hour: 'numeric', minute: '2-digit' },
     windowResize: function () {
       var mobile = isMobile();
-      calendar.changeView(mobile ? 'listWeek' : 'dayGridMonth');
+      calendar.changeView(mobile ? 'listMonth' : 'dayGridMonth');
       calendar.setOption('headerToolbar', {
         left: 'prev,next today',
         center: 'title',
-        right: mobile ? 'listWeek' : 'dayGridMonth,listWeek'
+        right: mobile ? 'listMonth' : 'dayGridMonth,listMonth'
       });
     },
     eventClick: function (arg) {
