@@ -11,11 +11,11 @@ To join the NVHHH listserv to receive Nitwit hash-related community info, genera
 
 ## I have a smartphone, can I subscribe to the receding hareline so trail information shows up in my phone's calendar application?
 
-Yes. Here are [instructions for the iPhone](hareline-subscription.html). Other smartphones should be similar.
+Yes. Here are [instructions for the iPhone and Android](hareline-subscription.html).
 
 ## How do I access the NVHHH Google calendar to add/edit runs?
 
-**Step 1:** In general you will need to sign up for a Google/gmail account. If you already have an account proceed to Step 2 otherwise, go to [http://www.google.com/accounts](https://www.google.com/accounts) then click on Create an account. Alternatively, you can email the current [hareraiser@nvhhh.com](mailto:hareraiser@nvhhh.com) and ask them to add your event for you.
+**Step 1:** In general you will need to sign up for a Google/Gmail account. If you already have an account proceed to Step 2, otherwise go to [accounts.google.com](https://accounts.google.com) and create one. Alternatively, you can email the current [hareraiser@nvhhh.com](mailto:hareraiser@nvhhh.com) and ask them to add your event for you.
 
 **Step 2:** If you want to hare and need access to calendar to add/edit new events, use the [contact form](contact.html) to send an email to the webmaster and ask to have the NVHHH Receding Hareline (Google calendar) shared with you. Include the email address that you want to use for hash related activities.
 
