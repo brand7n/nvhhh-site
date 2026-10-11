@@ -6,8 +6,6 @@ calendar: true
 
 ## What is Hashing?
 
-![NVHHH Fat Bunny Logo](assets/images/nvhhh_logo.gif)
-
 We are a "drinking club with a running problem." We follow a trail of chalk or flour (~2.2–6.9 miles) to an ON-AFTER celebration of refreshments (mostly beer) and songs. The start begins at different locations in and around State College each week (Summer, Mondays 6:30pm, Winter, Sundays 3pm, and Full Moons at 8pm). You can find the start location by viewing the calendar below.
 
 A hare lays the trail and the pack follows the trail. Our point is to socialize, see new and different areas of Centre County, and meet new fun people. It is only $5 per hash and your second hash is FREE. If you've half a mind to try it, that's all it takes. This is a NON-competitive social group. If you get in shape, it's your own damn fault!
