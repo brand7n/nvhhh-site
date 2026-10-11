@@ -5,7 +5,7 @@ nav: mismanagement.html
 
 The Nittany Valley HHH was founded in 1987 by Mike "Dr. Kraut" Modest
 
-## Nittany Valley HHH 2024–2025 Mismanagement
+## Nittany Valley HHH 2025–2026 Mismanagement
 
 - **Tyrant:** It's A Secret — [tyrant@nvhhh.com](mailto:tyrant@nvhhh.com)
 - **Religious Adviser:** ??
@@ -53,5 +53,5 @@ The Nittany Valley HHH was founded in 1987 by Mike "Dr. Kraut" Modest
 - Ya Lion Clint (22–23)
 - Dragnet (23–24)
 - Daddy's Home...Bitch (24–25)
-- You Can Call Me Anything That You Like But My Name Is Veronica (25-26)
+- You Can Call Me Anything That You Like But My Name Is Veronica (25–26)
 

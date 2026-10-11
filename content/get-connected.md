@@ -7,7 +7,7 @@ Here you will find instructions on how the website functions, how to add runs to
 
 ## How do I join the NVHHH email list?
 
-To join the NVHHH listserv to receive Nitwit hash-related community info, general run info and also receive the newsletter, send a self-addressed stamped envelope to [nvhhh+subscribe@googlegroups.com](mailto:nvhhh+subscribe@googlegroups.com). If you are experiencing any issues joining the listserv use the [contact form](contact.html) to request access from the account you intend to use.
+To join the NVHHH listserv to receive Nitwit hash-related community info, general run info and also receive the newsletter, email [nvhhh+subscribe@googlegroups.com](mailto:nvhhh+subscribe@googlegroups.com). If you are experiencing any issues joining the listserv use the [contact page](contact.html) to request access from the account you intend to use.
 
 ## I have a smartphone, can I subscribe to the receding hareline so trail information shows up in my phone's calendar application?
 
@@ -21,7 +21,7 @@ Yes. Here are [instructions for the iPhone](hareline-subscription.html). Other s
 
 ## A Note About Adding Events to the NVHHH Receding Hareline Google Calendar (See Step 2 above first!)
 
-**Step 1:** You can get to the NVHHH Receding Hareline Google calendar by clicking on the Google Calendar button at bottom right corner of the embedded map on the front page. If you don't see "NVHHH Receding Hareline" under "My calendars" you probably don't have access to the NVHHH Google calendar yet, go to Step 2 above!
+**Step 1:** You can get to the NVHHH Receding Hareline Google calendar by clicking the Google Calendar button at the bottom right of the calendar on the front page. If you don't see "NVHHH Receding Hareline" under "My calendars" you probably don't have access to the NVHHH Google calendar yet, go to Step 2 above!
 
 **Step 2:** Click on the desired run/event date, make sure you select "NVHHH Receding Hareline" from the "Calendar:" drop down box and then click edit event details.
 
