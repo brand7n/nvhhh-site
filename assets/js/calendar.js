@@ -2,7 +2,7 @@
 // Defaults to list view on small screens, month grid on large; switches on resize.
 (function () {
   var CAL_ID = '55k6rnam11akkav5vljqlsc6lo@group.calendar.google.com';
-  var API_KEY = 'AIzaSyBdALDlIYcT1gVvvx-S4Q15sI0LI8bphho'; // ponytail: demo key; swap for a production key or use the public embed if it stops working.
+  var API_KEY = 'AIzaSyBdALDlIYcT1gVvvx-S4Q15sI0LI8bphho'; 
 
   var el = document.getElementById('calendar');
   if (!el || typeof FullCalendar === 'undefined') return;

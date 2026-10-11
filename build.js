@@ -142,7 +142,7 @@ const layout = fs.readFileSync(TEMPLATE, 'utf8');
 const CALENDAR_HTML = `
 <div class="calendar-toolbar">
   <a class="btn" href="https://calendar.google.com/calendar/embed?src=55k6rnam11akkav5vljqlsc6lo%40group.calendar.google.com&ctz=America/New_York" target="_blank" rel="noopener">Open in Google Calendar</a>
-  <a class="btn secondary" href="https://calendar.google.com/calendar/ical/55k6rnam11akkav5vljqlsc6lo%40group.calendar.google.com/public/basic.ics" target="_blank" rel="noopener">Subscribe (.ics)</a>
+  <a class="btn secondary" href="hareline-subscription.html">Subscribe on your phone</a>
 </div>
 <div id="loading">Loading events…</div>
 <div id="calendar"></div>
@@ -159,8 +159,8 @@ const CALENDAR_HTML = `
 </div>`;
 
 const CALENDAR_SCRIPTS = `
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.css">
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+<script src="assets/vendor/fullcalendar/index.global.min.js"></script>
+<script src="assets/vendor/fullcalendar/google-calendar.global.min.js"></script>
 <script src="assets/js/calendar.js"></script>`;
 
 function buildPage(file, meta, body) {
