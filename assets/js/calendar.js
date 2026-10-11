@@ -28,18 +28,23 @@
           return;
         }
         var html = '<ul class="trail-list">';
-        items.forEach(function (ev) {
+        items.forEach(function (ev, idx) {
           var start = new Date(ev.start.dateTime || ev.start.date);
           var when = start.toLocaleString([], {
             weekday: 'short', month: 'short', day: 'numeric',
             hour: 'numeric', minute: '2-digit'
           });
           var loc = ev.location ? '<span class="trail-loc">' + ev.location + '</span>' : '';
-          html += '<li><div class="trail-when">' + when + '</div>' +
+          html += '<li data-idx="' + idx + '"><div class="trail-when">' + when + '</div>' +
             '<div class="trail-title">' + (ev.summary || 'Untitled') + '</div>' + loc + '</li>';
         });
         html += '</ul>';
         el.innerHTML = html;
+        el.querySelectorAll('li').forEach(function (li) {
+          li.addEventListener('click', function () {
+            openModal(items[+li.getAttribute('data-idx')]);
+          });
+        });
       })
       .catch(function () {
         loading.style.display = 'none';
@@ -75,18 +80,18 @@
     }
   }
 
-  // ---- modal (desktop) ----
+  // ---- modal (desktop + mobile list) ----
   var backdrop = document.getElementById('event-modal');
   var title = document.getElementById('modal-title');
   var start = document.getElementById('modal-start');
   var location = document.getElementById('modal-location');
   var details = document.getElementById('modal-details');
 
-  function openModal(event) {
-    title.textContent = event.title || 'Untitled';
-    start.textContent = event.start ? new Date(event.start).toLocaleString() : 'TBD';
-    location.textContent = event.extendedProps.location || 'TBD';
-    details.textContent = event.extendedProps.description || 'TBD';
+  function openModal(ev) {
+    title.textContent = ev.title || ev.summary || 'Untitled';
+    start.textContent = ev.start ? new Date(ev.start).toLocaleString() : 'TBD';
+    location.textContent = ev.extendedProps ? (ev.extendedProps.location || 'TBD') : (ev.location || 'TBD');
+    details.textContent = ev.extendedProps ? (ev.extendedProps.description || 'TBD') : (ev.description || 'TBD');
     backdrop.classList.add('open');
     document.body.style.overflow = 'hidden';
   }

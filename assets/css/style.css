@@ -121,11 +121,12 @@ td img { max-height: 28px; vertical-align: middle; }
 
 /* mobile "next 10 trails" list */
 .trail-list { list-style: none; margin: 0; padding: 0; }
-.trail-list li { padding: 14px 12px; border-bottom: 1px solid var(--line); }
+.trail-list li { padding: 12px 0; border-bottom: 1px solid var(--line); cursor: pointer; }
 .trail-list li:last-child { border-bottom: none; }
+.trail-list li:active { background: #f3eee2; }
 .trail-when { font-size: .8rem; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
-.trail-title { font-weight: 600; margin: 2px 0; }
-.trail-loc { display: block; font-size: .9rem; color: var(--muted); }
+.trail-title { font-weight: 600; margin-top: 2px; }
+.trail-loc { display: block; font-size: .9rem; color: var(--muted); margin-top: 2px; }
 .muted { color: var(--muted); }
 
 /* FullCalendar mobile tweaks */
