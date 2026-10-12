@@ -6,6 +6,7 @@
     "build": "node build.js"
   },
   "dependencies": {
+    "@formspree/ajax": "^1.1.5",
     "@swup/fade-theme": "^2.0.2",
     "marked": "^18.1.0",
     "pdfjs-dist": "^6.4.299",

@@ -169,3 +169,21 @@ td img { max-height: 28px; vertical-align: middle; }
   .brand-logo { width: 52px; height: 52px; }
   .brand-name { font-size: 1.15rem; }
 }
+
+/* ---------- contact form ---------- */
+.contact-form { display: flex; flex-direction: column; gap: 12px; max-width: 560px; }
+.contact-form label { font-weight: 600; font-size: .9rem; }
+.contact-form input,
+.contact-form textarea {
+  width: 100%; padding: 10px 12px; margin-top: 4px;
+  border: 1px solid var(--line); border-radius: 8px;
+  font: inherit; color: var(--ink); background: var(--surface);
+}
+.contact-form input:focus, .contact-form textarea:focus {
+  outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent);
+}
+.contact-form .btn { align-self: flex-start; margin-top: 4px; }
+.contact-form .btn:disabled { opacity: .6; cursor: wait; }
+.form-success { display: none; color: #1a7f37; background: #e6f4ea; border: 1px solid #b7e1c3; padding: 12px 14px; border-radius: 8px; margin-bottom: 16px; }
+.form-error { display: none; color: var(--accent-dark); background: #fdecea; border: 1px solid #f5c6c0; padding: 12px 14px; border-radius: 8px; margin-bottom: 16px; }
+.field-error { color: var(--accent-dark); font-size: .85rem; }

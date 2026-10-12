@@ -14,6 +14,6 @@ A hare lays the trail and the pack follows the trail. Our point is to socialize,
 
 ## Receding Hareline
 
-Trail information can be found on the calendar below. For instructions on how to add trails to the calendar see the [Get Connected](get-connected.html) page. Alternatively you can send the hare raiser ([hareraiser@nvhhh.com](mailto:hareraiser@nvhhh.com)) your trail info and they will add it for you.
+Trail information can be found on the calendar below. For instructions on how to add trails to the calendar see the [Get Connected](get-connected.html) page. Alternatively you can [send the hare raiser your trail info](contact.html) and they will add it for you.
 
 {{calendar}}

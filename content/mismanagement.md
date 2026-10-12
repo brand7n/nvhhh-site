@@ -7,12 +7,12 @@ The Nittany Valley HHH was founded in 1987 by Mike "Dr. Kraut" Modest
 
 ## Nittany Valley HHH 2025–2026 Mismanagement
 
-- **Tyrant:** It's A Secret — [tyrant@nvhhh.com](mailto:tyrant@nvhhh.com)
+- **Tyrant:** It's A Secret
 - **Religious Adviser:** ??
 - **Altar People:** ??
 - **Hash Cash:** The Tickle Me Homo
-- **Hareraiser:** The Tickle Me Homo — [hareraiser@nvhhh.com](mailto:hareraiser@nvhhh.com)
-- **Webmaster:** The Tickle Me Homo — [webmaster@nvhhh.com](mailto:webmaster@nvhhh.com)
+- **Hareraiser:** The Tickle Me Homo
+- **Webmaster:** The Tickle Me Homo
 - **Haberdashers:** Pork Screw, Jimmy "Six Degrees" Shrimp-Fingers of Penetration
 - **F.B.A.C. (Fat Boy Advisory Council):** Floppy, TuTu Fairy, and Pork Screw (song meisters, MWS: mismanagement withdrawal syndrome, etc.)
 

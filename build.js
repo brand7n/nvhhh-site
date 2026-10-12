@@ -106,5 +106,10 @@ const swup = path.join(DIST, 'assets', 'vendor', 'swup');
 fs.mkdirSync(swup, { recursive: true });
 fs.copyFileSync(path.join(ROOT, 'node_modules', 'swup', 'dist', 'Swup.umd.js'), path.join(swup, 'swup.umd.js'));
 fs.copyFileSync(path.join(ROOT, 'node_modules', '@swup', 'fade-theme', 'dist', 'index.umd.js'), path.join(swup, 'fade-theme.umd.js'));
+
+// copy formspree (npm-managed) browser build
+const fs2 = path.join(DIST, 'assets', 'vendor', 'formspree');
+fs.mkdirSync(fs2, { recursive: true });
+fs.copyFileSync(path.join(ROOT, 'node_modules', '@formspree', 'ajax', 'dist', 'global.js'), path.join(fs2, 'global.js'));
 console.log('copied assets');
 console.log('done');
