@@ -46,11 +46,18 @@
       .then(function (data) {
         loading.style.display = 'none';
         var items = (data && data.items) || [];
-        if (!items.length) {
-          el.innerHTML = '<p class="muted">No upcoming trails scheduled.</p>';
-          return;
-        }
+        var now = Date.now();
+        var week = now + 7 * 24 * 60 * 60 * 1000;
+        var hasSoon = items.some(function (ev) {
+          var t = new Date(ev.start.dateTime || ev.start.date).getTime();
+          return t >= now && t <= week;
+        });
         var html = '<ul class="trail-list">';
+        if (!hasSoon) {
+          html += '<li class="trail-empty"><img src="assets/images/meme.jpg" alt="" class="trail-meme">' +
+            '<div class="trail-cols"><div class="trail-col">There are no trails on the calendar for the next 7 days!?</div>' +
+            '<div class="trail-col">Then sign up to hare one!!</div></div></li>';
+        }
         items.forEach(function (ev, idx) {
           var d = new Date(ev.start.dateTime || ev.start.date);
           var when = d.toLocaleString([], {
@@ -63,7 +70,7 @@
         });
         html += '</ul>';
         el.innerHTML = html;
-        el.querySelectorAll('li').forEach(function (li) {
+        el.querySelectorAll('li[data-idx]').forEach(function (li) {
           li.addEventListener('click', function () {
             openModal(items[+li.getAttribute('data-idx')]);
           });

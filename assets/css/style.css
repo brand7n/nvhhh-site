@@ -187,3 +187,15 @@ td img { max-height: 28px; vertical-align: middle; }
 .form-success { display: none; color: #1a7f37; background: #e6f4ea; border: 1px solid #b7e1c3; padding: 12px 14px; border-radius: 8px; margin-bottom: 16px; }
 .form-error { display: none; color: var(--accent-dark); background: #fdecea; border: 1px solid #f5c6c0; padding: 12px 14px; border-radius: 8px; margin-bottom: 16px; }
 .field-error { color: var(--accent-dark); font-size: .85rem; }
+
+/* ---------- no-trails meme entry ---------- */
+.trail-list li.trail-empty {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  text-align: center; padding: 20px 16px; background: var(--surface);
+  border: 2px dashed var(--accent); border-radius: var(--radius);
+}
+.trail-meme { width: 100%; max-width: 320px; border-radius: 8px; }
+.trail-empty .trail-title { font-weight: 700; font-size: 1.05rem; color: var(--accent-dark); }
+.trail-sub { font-size: .9rem; color: var(--muted); font-style: italic; }
+.trail-cols { display: flex; justify-content: space-between; width: 100%; max-width: 320px; margin: 0 auto; }
+.trail-col { flex: 1; font-weight: 700; font-size: 1.05rem; color: var(--accent-dark); }
