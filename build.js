@@ -71,17 +71,10 @@ const CALENDAR_HTML = `
   </div>
 </div>`;
 
-const CALENDAR_SCRIPTS = `
-<script src="assets/vendor/fullcalendar/index.global.min.js"></script>
-<script src="assets/vendor/fullcalendar/google-calendar.global.min.js"></script>
-<script src="assets/js/calendar.js"></script>`;
-
 function buildPage(file, meta, body) {
   let content = mdToHtml(body);
-  let extra = '';
   if (meta.calendar) {
     content = content.replace('{{calendar}}', CALENDAR_HTML);
-    extra = CALENDAR_SCRIPTS;
   }
   const active = meta.nav || file;
   const nav = NAV.map(([href, label]) =>
@@ -89,8 +82,7 @@ function buildPage(file, meta, body) {
   const html = layout
     .replace(/\{\{title\}\}/g, meta.title || 'Nittany Valley Hash House Harriers')
     .replace(/\{\{nav\}\}/g, nav)
-    .replace(/\{\{content\}\}/g, content)
-    .replace('</body>', extra + '\n</body>');
+    .replace(/\{\{content\}\}/g, content);
   fs.writeFileSync(path.join(DIST, file), html);
   console.log('built', file);
 }
@@ -98,20 +90,21 @@ function buildPage(file, meta, body) {
 fs.rmSync(DIST, { recursive: true, force: true });
 fs.mkdirSync(DIST, { recursive: true });
 
-for (const f of fs.readdirSync(CONTENT)) {
-  if (!f.endsWith('.md')) continue;
-  const { meta, body } = parseFrontmatter(fs.readFileSync(path.join(CONTENT, f), 'utf8'));
-  const out = meta.out || f.replace(/\.md$/, '.html');
-  buildPage(out, meta, body);
-}
+const pages = fs.readdirSync(CONTENT)
+  .filter(f => f.endsWith('.md'))
+  .map(f => {
+    const { meta, body } = parseFrontmatter(fs.readFileSync(path.join(CONTENT, f), 'utf8'));
+    return { file: meta.out || f.replace(/\.md$/, '.html'), meta, body };
+  });
+pages.forEach(p => buildPage(p.file, p.meta, p.body));
 
 // copy assets
 fs.cpSync(path.join(ROOT, 'assets'), path.join(DIST, 'assets'), { recursive: true });
 
-// copy FullCalendar from node_modules (npm-managed)
-const fc = path.join(DIST, 'assets', 'vendor', 'fullcalendar');
-fs.mkdirSync(fc, { recursive: true });
-fs.copyFileSync(path.join(ROOT, 'node_modules', 'fullcalendar', 'index.global.min.js'), path.join(fc, 'index.global.min.js'));
-fs.copyFileSync(path.join(ROOT, 'node_modules', '@fullcalendar', 'google-calendar', 'index.global.min.js'), path.join(fc, 'google-calendar.global.min.js'));
+// copy swup (npm-managed) UMD builds
+const swup = path.join(DIST, 'assets', 'vendor', 'swup');
+fs.mkdirSync(swup, { recursive: true });
+fs.copyFileSync(path.join(ROOT, 'node_modules', 'swup', 'dist', 'Swup.umd.js'), path.join(swup, 'swup.umd.js'));
+fs.copyFileSync(path.join(ROOT, 'node_modules', '@swup', 'fade-theme', 'dist', 'index.umd.js'), path.join(swup, 'fade-theme.umd.js'));
 console.log('copied assets');
 console.log('done');

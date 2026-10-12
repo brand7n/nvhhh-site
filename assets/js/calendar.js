@@ -1,18 +1,41 @@
-// NVHHH calendar.
-// Mobile: custom "next 10 trails" list (fetched via Google Calendar API).
-// Desktop: FullCalendar month grid.
+// NVHHH calendar: "next 10 trails" list (mobile + desktop).
+// Exposes NVHHH_CALENDAR_INIT so the client-side router can re-render
+// after swapping in the calendar page.
 (function () {
   var CAL_ID = '55k6rnam11akkav5vljqlsc6lo@group.calendar.google.com';
   var API_KEY = 'AIzaSyBdALDlIYcT1gVvvx-S4Q15sI0LI8bphho';
+  var keyHandler = null;
 
-  var el = document.getElementById('calendar');
-  if (!el) return;
+  function init() {
+    var el = document.getElementById('calendar');
+    var backdrop = document.getElementById('event-modal');
+    if (!el || !backdrop) return;
 
-  var isMobile = function () { return window.innerWidth < 768; };
-  var calendar = null;
-
-  function renderNextTen() {
     var loading = document.getElementById('loading');
+    var title = document.getElementById('modal-title');
+    var start = document.getElementById('modal-start');
+    var location = document.getElementById('modal-location');
+    var details = document.getElementById('modal-details');
+
+    function openModal(ev) {
+      title.textContent = ev.summary || 'Untitled';
+      start.textContent = ev.start ? new Date(ev.start.dateTime || ev.start.date).toLocaleString() : 'TBD';
+      location.textContent = ev.location || 'TBD';
+      details.textContent = ev.description || 'TBD';
+      backdrop.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      backdrop.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    backdrop.addEventListener('click', function (e) { if (e.target === backdrop) closeModal(); });
+    var closeBtn = document.getElementById('modal-close');
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (keyHandler) document.removeEventListener('keydown', keyHandler);
+    keyHandler = function (e) { if (e.key === 'Escape') closeModal(); };
+    document.addEventListener('keydown', keyHandler);
+
     loading.style.display = 'block';
     var url = 'https://www.googleapis.com/calendar/v3/calendars/' + encodeURIComponent(CAL_ID) +
       '/events?key=' + API_KEY +
@@ -29,8 +52,8 @@
         }
         var html = '<ul class="trail-list">';
         items.forEach(function (ev, idx) {
-          var start = new Date(ev.start.dateTime || ev.start.date);
-          var when = start.toLocaleString([], {
+          var d = new Date(ev.start.dateTime || ev.start.date);
+          var when = d.toLocaleString([], {
             weekday: 'short', month: 'short', day: 'numeric',
             hour: 'numeric', minute: '2-digit'
           });
@@ -52,68 +75,6 @@
       });
   }
 
-  function init() {
-    if (isMobile()) {
-      if (calendar) { calendar.destroy(); calendar = null; }
-      renderNextTen();
-    } else {
-      if (typeof FullCalendar === 'undefined') return;
-      if (!calendar) {
-        calendar = new FullCalendar.Calendar(el, {
-          googleCalendarApiKey: API_KEY,
-          events: CAL_ID,
-          initialView: 'dayGridMonth',
-          headerToolbar: { left: 'prev,next today', center: 'title', right: 'dayGridMonth,listMonth' },
-          height: 'auto',
-          nowIndicator: true,
-          eventTimeFormat: { hour: 'numeric', minute: '2-digit' },
-          eventClick: function (arg) {
-            arg.jsEvent.preventDefault();
-            openModal(arg.event);
-          },
-          loading: function (bool) {
-            document.getElementById('loading').style.display = bool ? 'block' : 'none';
-          }
-        });
-        calendar.render();
-      }
-    }
-  }
-
-  // ---- modal (desktop + mobile list) ----
-  var backdrop = document.getElementById('event-modal');
-  var title = document.getElementById('modal-title');
-  var start = document.getElementById('modal-start');
-  var location = document.getElementById('modal-location');
-  var details = document.getElementById('modal-details');
-
-  function openModal(ev) {
-    title.textContent = ev.title || ev.summary || 'Untitled';
-    var rawStart = ev.start ? (ev.start.dateTime || ev.start.date) : null;
-    start.textContent = rawStart ? new Date(rawStart).toLocaleString() : 'TBD';
-    location.textContent = ev.extendedProps ? (ev.extendedProps.location || 'TBD') : (ev.location || 'TBD');
-    details.textContent = ev.extendedProps ? (ev.extendedProps.description || 'TBD') : (ev.description || 'TBD');
-    backdrop.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeModal() {
-    backdrop.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  backdrop.addEventListener('click', function (e) {
-    if (e.target === backdrop) closeModal();
-  });
-  document.getElementById('modal-close').addEventListener('click', closeModal);
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeModal();
-  });
-
+  window.NVHHH_CALENDAR_INIT = init;
   init();
-  var resizeTimer;
-  window.addEventListener('resize', function () {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(init, 200);
-  });
 })();
