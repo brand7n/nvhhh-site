@@ -43,6 +43,7 @@ function parseFrontmatter(md) {
 const NAV = [
   ['index.html', 'Home'],
   ['hare-resources.html', 'Hare Resources'],
+  ['trail-history.html', 'Trail History'],
   ['get-connected.html', 'Get Connected'],
   ['mismanagement.html', 'Mismanagement'],
   ['faq.html', 'FAQs'],

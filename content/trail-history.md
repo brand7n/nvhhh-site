@@ -3,7 +3,6 @@ title: Trail History
 nav: trail-history.html
 ---
 
-Check what's happening on twitter:
+## Past Trail Maps
 
-<a class="twitter-timeline" href="https://twitter.com/nvhhh">Tweets by nvhhh</a>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<iframe src="https://allyourregoarebelongto.us/embed/trails" width="100%" height="600" style="border:0" loading="lazy" title="Map of past NVHHH trail locations"></iframe>
